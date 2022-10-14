@@ -1,0 +1,155 @@
+.main__navigation {
+  padding: 1.4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #289cbe;
+  animation: flicker 1.5s infinite alternate;
+}
+
+.input {
+  color: #289cbe;
+  border: 3px solid #289cbe;
+  border-radius: 10px;
+  padding: 0.2rem 0.4rem;
+  outline: none;
+  animation: flicker-box 1.5s infinite alternate;
+  transition: all 0.3s ease-out;
+}
+
+.input::placeholder {
+  color: #289cbe;
+}
+
+.input:focus {
+  transform: scale(1.2);
+}
+.input:focus::placeholder {
+  color: transparent;
+}
+
+.links__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-out;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(9, 8, 8, 0.853);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-out;
+}
+
+.links {
+  padding: 1.2rem;
+}
+
+.link {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #289cbe;
+  text-shadow: 0 0 10px #289cbe;
+}
+
+.link:hover {
+  color: #6bc6e2;
+  text-shadow: 0 0 10px #6bc6e2, 0 0 20px #6bc6e2, 0 0 30px #6bc6e2;
+}
+
+.button__logout {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 1rem 1.6rem;
+  margin-top: 2rem;
+  background-color: #289cbe;
+  color: #fff;
+  text-transform: uppercase;
+  border: 2px solid #289cbe;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #289cbe;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.button__logout:hover {
+  background-color: #6bc6e2;
+  border: 2px solid #6bc6e2;
+}
+
+.mobile__icons {
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease-out;
+}
+
+.input__mob {
+  color: #289cbe;
+  margin-bottom: 2rem;
+  border: 3px solid #289cbe;
+  border-radius: 10px;
+  padding: 0.2rem 0.4rem;
+  outline: none;
+  animation: flicker-box 1.5s infinite alternate;
+  transition: all 0.3s ease-out;
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 10px #fff, 0 0 17px #fff, 0 0 38px #289cbe,
+      0 0 74px #289cbe, 0 0 87px #289cbe, 0 0 95px #289cbe, 0 0 140px #289cbe;
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+@keyframes flicker-box {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    box-shadow: 0 0 10px #fff, 0 0 17px #fff, 0 0 38px #289cbe, 0 0 74px #289cbe,
+      0 0 87px #289cbe, 0 0 95px #289cbe, 0 0 140px #289cbe;
+  }
+
+  20%,
+  24%,
+  55% {
+    box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .input {
+    display: none;
+  }
+}

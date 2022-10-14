@@ -1,0 +1,11 @@
+.text {
+  background: linear-gradient(to bottom right, rgb(102, 244, 149), #289cbe);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.4rem;
+  font-weight: bold;
+  width: 60%;
+  margin: 15% auto;
+
+  text-shadow: 0 0 15px #289cbe;
+}

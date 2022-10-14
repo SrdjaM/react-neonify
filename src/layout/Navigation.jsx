@@ -1,0 +1,41 @@
+import { Link } from "react-router-dom";
+
+import classes from "./Navigation.module.css";
+
+const Navigation = () => {
+  const logoutHandler = () => {
+    localStorage.removeItem("IsLoggedIn");
+  };
+
+  return (
+    <div className={classes.navigation}>
+      <nav className={classes["main__navigation"]}>
+        <div className={classes.logo}>Neonify</div>
+        <input type="text" className={classes.input} placeholder="Search" />
+        <ul className={classes["links__list"]}>
+          <li className={classes.links}>
+            <Link to="/" className={classes.link}>
+              Home
+            </Link>
+          </li>
+          <li className={classes.links}>
+            <Link to="/about" className={classes.link}>
+              About
+            </Link>
+          </li>
+          <li className={classes.links}>
+            <Link to="/products" className={classes.link}>
+              Products
+            </Link>
+          </li>
+        </ul>
+
+        <button className={classes.button__logout} onClick={logoutHandler}>
+          Logout
+        </button>
+      </nav>
+    </div>
+  );
+};
+
+export default Navigation;

@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import Form from "./components/Form";
+import WelcomePage from "./components/pages/WelcomePage";
 
 function App() {
+  const [enteredName, setEnteredName] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+  const addNameHandler = (data) => {
+    const userData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+    setEnteredName(userData.name);
+  };
+
+  const addValidityHandler = (validity) => {
+    if (validity) {
+      setIsValid(true);
+    }
+  };
+
+  const onLogoutHandler = () => {
+    const isLoggedIn = localStorage.getItem("IsLoggedIn");
+
+    if (isLoggedIn === "1") {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
+  useEffect(() => {
+    onLogoutHandler();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!isValid && (
+        <Form onAddName={addNameHandler} onFormValidity={addValidityHandler} />
+      )}
+      {isValid && <WelcomePage name={enteredName} />}
+    </>
   );
 }
 
