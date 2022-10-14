@@ -57,8 +57,6 @@ const Form = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    localStorage.setItem("IsLoggedIn", "1");
-
     setEnteredNameTouched(true);
     setEnteredEmailTouched(true);
     setEnteredPasswordTouched(true);
@@ -70,6 +68,8 @@ const Form = (props) => {
     ) {
       return;
     }
+
+    localStorage.setItem("IsLoggedIn", "1");
 
     const httpSend = {
       name: enteredName,
