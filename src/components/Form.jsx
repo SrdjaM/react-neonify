@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import AuthContext from "../context/auth-context";
 
 import classes from "./Form.module.css";
 
@@ -23,6 +24,8 @@ const Form = (props) => {
   const mailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
   const passwordInputIsInvalid =
     !enteredPasswordIsValid && enteredPasswordTouched;
+
+  const authCtx = useContext(AuthContext);
 
   const nameInputHandler = (e) => {
     setEnteredName(e.target.value);
@@ -69,7 +72,11 @@ const Form = (props) => {
       return;
     }
 
-    localStorage.setItem("IsLoggedIn", "1");
+    if (formIsValid) {
+      authCtx.onLogin(enteredName, enteredEmail, enteredPassword);
+    }
+
+    // localStorage.setItem("IsLoggedIn", "1");
 
     const httpSend = {
       name: enteredName,
@@ -78,7 +85,7 @@ const Form = (props) => {
     };
 
     props.onAddName(httpSend);
-    props.onFormValidity(formIsValid);
+    // props.onFormValidity(formIsValid);
 
     setEnteredName("");
     setEnteredNameTouched(false);

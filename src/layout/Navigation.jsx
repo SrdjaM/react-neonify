@@ -1,11 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../context/auth-context";
 
 import classes from "./Navigation.module.css";
 
 const Navigation = () => {
-  const logoutHandler = () => {
-    localStorage.removeItem("IsLoggedIn");
-  };
+  const ctx = useContext(AuthContext);
 
   return (
     <div className={classes.navigation}>
@@ -30,7 +30,7 @@ const Navigation = () => {
           </li>
         </ul>
 
-        <button className={classes.button__logout} onClick={logoutHandler}>
+        <button className={classes.button__logout} onClick={ctx.onLogout}>
           Logout
         </button>
       </nav>

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "../context/auth-context";
 import { Link } from "react-router-dom";
 import { BsJustifyRight, BsX } from "react-icons/bs";
 import { IconContext } from "react-icons";
@@ -12,9 +13,7 @@ const MobileNavigation = () => {
     setShowNav(!showNav);
   };
 
-  const logoutHandler = () => {
-    localStorage.removeItem("IsLoggedIn");
-  };
+  const ctx = useContext(AuthContext);
 
   return (
     <IconContext.Provider value={{ color: "#289cbe", size: "30px" }}>
@@ -47,7 +46,7 @@ const MobileNavigation = () => {
                 </li>
                 <button
                   className={classes.button__logout}
-                  onClick={logoutHandler}
+                  onClick={ctx.onLogout}
                 >
                   Logout
                 </button>

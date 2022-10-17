@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import Form from "./components/Form";
 import WelcomePage from "./components/pages/WelcomePage";
+import AuthContext from "./context/auth-context";
 
 function App() {
   const [enteredName, setEnteredName] = useState("");
-  const [isValid, setIsValid] = useState(false);
+
+  const ctx = useContext(AuthContext);
 
   const addNameHandler = (data) => {
     const userData = {
@@ -15,32 +17,10 @@ function App() {
     setEnteredName(userData.name);
   };
 
-  const addValidityHandler = (validity) => {
-    if (validity) {
-      setIsValid(true);
-    }
-  };
-
-  const onLogoutHandler = () => {
-    const isLoggedIn = localStorage.getItem("IsLoggedIn");
-
-    if (isLoggedIn === "1") {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
-  };
-
-  useEffect(() => {
-    onLogoutHandler();
-  }, []);
-
   return (
     <>
-      {!isValid && (
-        <Form onAddName={addNameHandler} onFormValidity={addValidityHandler} />
-      )}
-      {isValid && <WelcomePage name={enteredName} />}
+      {!ctx.isLoggedIn && <Form onAddName={addNameHandler} />}
+      {ctx.isLoggedIn && <WelcomePage name={enteredName} />}
     </>
   );
 }
