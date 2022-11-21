@@ -144,7 +144,9 @@ const Form = (props) => {
         onBlur={passwordOnBlurHandler}
       />
       {passwordInputIsInvalid && (
-        <p className={classes["error-message"]}>Please enter valid password</p>
+        <p className={classes["error-message"]}>
+          Password must be longer than 6 characters
+        </p>
       )}
       <button type="submit" className={classes.btn}>
         Submit
