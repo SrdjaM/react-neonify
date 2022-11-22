@@ -19,7 +19,9 @@ const MobileNavigation = () => {
     <IconContext.Provider value={{ color: "#289cbe", size: "30px" }}>
       <div className={classes.navigation}>
         <nav className={classes["main__navigation"]}>
-          <div className={classes.logo}>Neonify</div>
+          <Link to="/" className={classes.logo}>
+            Neonify
+          </Link>
           <input type="text" className={classes.input} placeholder="Search" />
           {showNav && (
             <div className={classes.modal}>

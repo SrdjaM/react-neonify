@@ -10,7 +10,9 @@ const Navigation = () => {
   return (
     <div className={classes.navigation}>
       <nav className={classes["main__navigation"]}>
-        <div className={classes.logo}>Neonify</div>
+        <Link to="/" className={classes.logo}>
+          Neonify
+        </Link>
         <input type="text" className={classes.input} placeholder="Search" />
         <ul className={classes["links__list"]}>
           <li className={classes.links}>
